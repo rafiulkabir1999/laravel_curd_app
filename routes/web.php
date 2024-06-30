@@ -4,13 +4,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Middleware\AuthenticateMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('landing');
 });
 
-Route::get('/student',[StudentController::class,'index'])->name('student.index');
+Route::get('/student',[StudentController::class,'index'])->middleware(AuthenticateMiddleware::class)->name('student.index');
 Route::post('/student/store',[StudentController::class,'store'])->name('student.store');
 Route::get('/student/create',[StudentController::class,'create'])->name('student.create');
 Route::get('/student/edit/{id}',[StudentController::class,'edit'])->name('student.edit');
@@ -32,3 +33,9 @@ Route::post('/login',[AuthController::class,'check'])->name('auth.check');
 
 Route::get('profile',[ProfileController::class,'index'])->name('user.profile');
 
+
+
+// Route::group(function(){
+//     Route::get('/blog','BlogController@index');
+//     Route::get('/blog1','BlogController@index');
+// });
