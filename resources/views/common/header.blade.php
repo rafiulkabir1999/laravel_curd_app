@@ -20,9 +20,15 @@
   
     </div>
   
-  <div class="">
+ 
+    @if (Auth::check())
+   <a href='user/logout' class="text-light">Logout</a>
+@else
+             
     <a href='/login' class="text-light">Login</a>
-  </div>
+@endif
+    
+
   </div>
   
 <div>

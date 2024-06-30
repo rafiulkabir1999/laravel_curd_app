@@ -5,7 +5,7 @@
         <p class="fs-5 p-0 text-center">Register here in here</p>
 
 
-        <form action="{{route('auth.storeUser')}}" method='POST'>
+        <form action=" {{route('auth.storeUser')}} " method='POST'>
             @csrf
             <div class="form-group">
               <label for="text-left">Name</label>
