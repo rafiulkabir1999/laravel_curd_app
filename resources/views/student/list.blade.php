@@ -1,48 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        ul{
-            width: 1200px;
-            margin:0 auto;
-            
-        }
-        li{
-            display: flex;
-            justify-content: space-around;
-            padding:5px;
-            margin:5px;border:1px solid gray
-        }
-    </style>
-</head>
-<body>
-    <ul>
-        <a href='student/create' style="background:blue;padding:10px 20px; border:none; width:102px; color:white;border-radious:10px">Create Student</a>
-        <li style="background:gray ; color:white">
-            <p>Name</p>
-            <p>Email</p>
-            <p>Address</p>
-            <p>id</p>
-            <p>Action</p>
-        </li>
-        
+@extends('layouts.app')
+@section('content')
+<div class="my-4" style="min-height: 100vh">
+    <a href='student/create' class="mb-4 btn btn-warning" >Create Student</a>
+       
     
-        @foreach($data as $item)
-        <li>
-            <p>{{$item->name}}</p>
-            <p>{{$item->email}}</p>
-            <p>rafi.eee.1999@gmail.com</p>
-            <p>{{$item->address}}</p>
-            <div>
-                <span style="background: red;color:white; padding:10px">DELETE</span>
-                <a href='student/edit/{{$item->s_id}}' style="background: yellow;color:white; padding:10px">Edit</a>
+        <table class="table mt-4">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>ID</th>
+                <th>Action</th>
+            </tr>
+      
+       @foreach($data as $item)
+       <tr>
+        <td>{{$item->name}}</td>
+        <td>{{$item->email}}</td>
+        <td>{{$item->address}}</td>
+        <td>{{$item->id}}</td>
+        <td>
+            <div style="display: flex;gap:5px">
+                {{-- <span style="background: red;color:white; padding:10px">DELETE</span> --}}
+                <form action="{{route('student.delete',$item->id)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                
+               
+
+                    <a href='student/edit/{{$item->id}}' class="btn btn-secondary text-decoration-none" style="height:38px">Edit</a>
+               
             </div>
-        </li>
+        </td>
+    </tr>
         @endforeach
-        <hr>
-    </ul>
-</body>
-</html>
+        </table>
+
+</div>
+@stop

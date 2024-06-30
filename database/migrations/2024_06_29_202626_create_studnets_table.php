@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('address');
             $table->integer('phone');
-            $table->primary('s_id');
+            $table->primary('id');
         });
     }
 

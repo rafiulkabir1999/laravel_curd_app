@@ -1,64 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+@extends('layouts.app')
 
-
-    <style>
-        .formbody{
-            display: flex;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-
-        }
-        input{
-            padding:6px;
-            border:none;
-            border-bottom: 1px solid gray;
-            font-size: 24px;
-        }
-        input:focus{
-            outline: none;
-            border-color: green;
-            border-bottom:4px solid green
-        }
-        label{
-            font-weight: bold;
-            font-size: 24px;
-            color:gray;
-        }
-    </style>
-</head>
-<body class="formbody">
-    <form action="{{ route('student.store') }}" method="POST">
+@section('content')
+   <div class="pt-4" style="min-height: 100vh">
+    <p class="text-center fs-3">Creatre A Student Here</p>
+    <form action="{{ route('student.store') }}" method="POST" class="w-50 mx-auto p-4 border rounded-1">
         
         @csrf
-         <div class="">
-            <label for="">Name</label>
-            <input type="text" name='name' required>
+         <div class="form-group pt-2">
+            <label for="" class="form-label">Name</label>
+            <input type="text" name='name' class="form-control" required>
          </div> 
-         <div class="">
-            <label for="">Email</label>
-            <input type="email" required name='email'>
+         <div class="form-group pt-2">
+            <label for="" class="form-label">Email</label>
+            <input type="email" required  class="form-control" name='email'>
          </div> 
-         <div class="">
-            <label for="">Phone </label>
-            <input type="text" required name='phone'>
+         <div class="form-group pt-2">
+            <label for="" class="form-label">Phone </label>
+            <input type="text" required class="form-control" name='phone'>
          </div> 
-         <div class="">
-            <label for="">Address</label>
-            <input type="text" required name='address'>
+         <div class="form-grupu">
+            <label class="form-label" for="">Address</label>
+            <input type="text" class="form-control" required name='address'>
          </div> 
-         <div class="">
+         {{-- <div class="">
             <label for="">ID</label>
             <input type="text" required name='id'>
-         </div> 
+         </div>  --}}
          
-         <button class="" type='submit' style="padding:10px ; background:blue; padding:10px 20px ; color:white">Save</button>
+         <button  type='submit' class="btn form-control btn-primary p-2 mt-4">Save</button>
 
     </form>
-</body>
-</html>
+   </div>
+@stop

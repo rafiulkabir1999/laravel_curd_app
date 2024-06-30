@@ -36,7 +36,7 @@ class StudentController extends Controller
         $student->email = $request->email;
         $student->phone = $request->phone;
         $student->address = $request->address;
-        $student->s_id = $request->id;
+        // $student->s_id = $request->id;
         $student->save();
         return redirect()->route('student.index')->with('success', 'Student created successfully!');
         //return $request;
@@ -77,5 +77,8 @@ class StudentController extends Controller
     public function destroy(string $id)
     {
         //
+        $student = Studnet::findOrFail($id);
+        $student->delete();
+        return redirect()->route('student.index')->with('success','Student Delete Successfully');
     }
 }

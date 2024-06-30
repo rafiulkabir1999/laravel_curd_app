@@ -1,66 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-
-    <style>
-        .formbody{
-            display: flex;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-
-        }
-        input{
-            padding:6px;
-            border:none;
-            border-bottom: 1px solid gray;
-            font-size: 24px;
-        }
-        input:focus{
-            outline: none;
-            border-color: green;
-            border-bottom:4px solid green
-        }
-        label{
-            font-weight: bold;
-            font-size: 24px;
-            color:gray;
-        }
-    </style>
-</head>
-<body class="formbody">
-    
-    <form action="{{ route('student.update',$student->s_id) }}" method="POST">
+@extends('layouts.app')
+@section('content')
+<div class="pt-4 " style="min-height: 100vh">
+    <p class="text-center pt-4 fs-3">Edit Student Info</p>
+    <form action="{{ route('student.update',$student->id) }}" method="POST" class="w-50 border rounded-3 mx-auto p-4">
         
         @csrf
         @method('PUT')
-         <div class="">
-            <label for="">Name</label>
-            <input type="text" name='name' required value="{{ old('name', $student->name) }}">
+         <div class="form-group pt-2">
+            <label for="" class="form-label">Name</label>
+            <input type="text" name='name' class="form-control" required value="{{ old('name', $student->name) }}">
          </div> 
-         <div class="">
-            <label for="">Email</label>
-            <input type="email" required name='email' value="{{ old('email', $student->email) }}">
+         <div class="form-group pt-2">
+            <label for="" class="form-label">Email</label>
+            <input type="email" required class="form-control" name='email' value="{{ old('email', $student->email) }}">
          </div> 
-         <div class="">
-            <label for="">Phone </label>
-            <input type="text" required name='phone' value="{{ old('phone', $student->phone) }}">
+         <div class="form-group pt-2">
+            <label for="" class="form-label">Phone </label>
+            <input type="text" required class="form-control" name='phone' value="{{ old('phone', $student->phone) }}">
          </div> 
-         <div class="">
-            <label for="">Address</label>
-            <input type="text" required name='address' value="{{ old('address', $student->address) }}">
+         <div class="form-group pt-2">
+            <label for="" class="form-label">Address</label>
+            <input type="text" required class="form-control" name='address' value="{{ old('address', $student->address) }}">
          </div> 
-         <div class="">
+         {{-- <div class="">
             <label for="">ID</label>
             <input type="text" required name='id' value="{{ old('id', $student->s_id) }}">
-         </div> 
+         </div>  --}}
          
-         <button class="" type='submit' style="padding:10px ; background:blue; padding:10px 20px ; color:white">Save</button>
-
+         <button  type='submit' class="btn mt-4 btn-primary form-control p-2">Save</button>
+    
     </form>
-</body>
-</html>
+</div>
+@stop
