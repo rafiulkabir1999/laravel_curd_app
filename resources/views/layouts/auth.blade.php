@@ -12,13 +12,13 @@
 
     <title>Document</title>
 </head>
-<body style="width:1200px; margin:0 auto">
+<body style=" margin:0 auto" class="bg-dark">
     {{-- <h1 style="text-align:center;padding:20px;color:white" class="bg-primary color-primary">This is Header</h1> --}}
     @include('common.authHeader')
     <div>
      @yield('content')
     </div>
-    <h1 style="text-align:center;background : orange ;padding:20px;color:white">This is Footer</h1>
+    <h1 class="bg-secondary" style="text-align:center; ;padding:20px;color:white">This is Footer</h1>
 
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <!-- Additional scripts -->

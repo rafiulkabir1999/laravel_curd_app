@@ -17,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             // 'auth' => AuthenticateMiddleware::class,
             
             // ]);
-            $middleware->append(AuthenticateMiddleware::class);
+            // $middleware->append(AuthenticateMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

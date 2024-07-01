@@ -12,14 +12,15 @@
 
     <title>Document</title>
 </head>
-<body style="width:1200px; margin:0 auto">
+<body style=" margin:0 auto" class="bg-dark">
     {{-- <h1 style="text-align:center;padding:20px;color:white" class="bg-primary color-primary">This is Header</h1> --}}
     @include('common.header')
-    <div>
+    <div class="bg-light">
      @yield('content')
     </div>
-    <h1 style="text-align:center;background : orange ;padding:20px;color:white">This is Footer</h1>
-
+    <div class="bg-secondary p-2 text-light ">
+        <p style="text-align:center">This is Footer</p>
+    </div>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <!-- Additional scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

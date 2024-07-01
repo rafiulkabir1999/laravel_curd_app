@@ -1,8 +1,8 @@
 @extends('layouts.auth')
 @section('content')
-<div class="d-flex justify-content-center align-items-center"style="min-height: 90vh">
+<div class="d-flex justify-content-center align-items-center bg-light"style="min-height: 90vh">
 
-    <div  class="mx-auto w-25  shadow rounded-3 p-4">
+    <div  class="mx-auto w-25  shadow rounded-3 p-4 ">
       @if ($errors->has('message'))
     <div class="error alert alert-warning">{{ $errors->first('message') }}</div>
 @endif

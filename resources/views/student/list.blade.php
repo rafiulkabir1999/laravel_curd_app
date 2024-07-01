@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="my-4" style="min-height: 100vh">
+<div class="p-4" style="min-height: 100vh">
     <a href='student/create' class="mb-4 btn btn-warning" >Create Student</a>
        
     

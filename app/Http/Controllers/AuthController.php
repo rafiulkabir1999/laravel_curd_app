@@ -19,14 +19,27 @@ class AuthController extends Controller
     }
     public function storeUser(Request $user){
 
-        
-         $newuser = new User();
-         $newuser->name = $user->name;
-         $newuser->email = $user->email;
-         $newuser->phone = $user->phone;
-         $newuser->password = $user->password;
-         $newuser->save();
-        return redirect()->route('student.index')->with('success','successfully created user');
+        $user->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'phone' => 'required',
+            'password' => 'required',
+        ]);
+    
+        // Create a new User instance
+        $newUser = new User();
+        $newUser->name = $user->name;
+        $newUser->email = $user->email;
+        $newUser->phone = $user->phone;
+        $newUser->password = $user->password;
+        // $newUser->password = bcrypt($user->password); // Securely hash the password
+    
+        // Attempt to save the new user record
+        if ($newUser->save()) {
+            return redirect()->route('student.index')->with('success', 'User successfully created');
+        } else {
+            return redirect()->route('auth.register')->withErrors(['error' => 'Failed to create user']);
+        }
     }
 
   
@@ -45,7 +58,6 @@ class AuthController extends Controller
         ]);
 
         if(Auth::attempt($credentials)){
-            // Session::put('key', 'value');
             
             return redirect()->intended('/profile')->cookie('user',$user->email);;
         }

@@ -2,7 +2,8 @@
 @section('content')
 
     <div class=" p-4 " style="min-height: 100vh">
-        <table class="table">
+        <h4 >User List</h4>
+        <table class="table table-striped">
             <tr>
                 <th>Name</th>
                 <th>Email</th>
