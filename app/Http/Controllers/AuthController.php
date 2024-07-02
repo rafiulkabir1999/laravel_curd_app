@@ -11,7 +11,13 @@ class AuthController extends Controller
 {
     //
     public function index(){
-        return view('auth.login');
+        if(Auth::user()){
+            return redirect()->route('user.profile');
+        }
+        else
+        {
+            return view('auth.login');
+        }
     }
     public function register(){
         // return 444;
