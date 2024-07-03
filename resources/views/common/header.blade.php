@@ -14,8 +14,8 @@
         <a href="/blogs" class="text-decoration-none text-light">
           <p class="pe-4 pb-1 mb-0">Blog</p>
         </a>
-        <a href="/blog" class="text-decoration-none text-light">
-          <p class="pe-4 pb-1 mb-0">Activity</p>
+        <a href="/showrooms" class="text-decoration-none text-light">
+          <p class="pe-4 pb-1 mb-0">Dashboard</p>
         </a>
   
     </div>

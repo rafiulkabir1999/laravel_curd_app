@@ -142,12 +142,12 @@ class BlogController extends Controller
         //
         $blogs = Blog::findOrFail($id);
         $filename = 'public/uploads/' . $blogs->img;
-         dd($filename);
-        dd(Storage::exists($filename));
+        // dd($filename);
+        //dd(Storage::exists($filename));
         if($blogs && Storage::exists(public_path('uploads') . $blogs->img)){
             return 444;
         }
-       // $blogs->delete();
+        $blogs->delete();
         return redirect()->route('blog.index')->with('delete','Blog Deleted Successfully');
     }
 }

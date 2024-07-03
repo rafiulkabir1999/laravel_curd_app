@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Middleware\AuthenticateMiddleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShowroomController;
 
 Route::get('/', function () {
     return view('landing');
@@ -59,6 +60,18 @@ Route::middleware([AuthenticateMiddleware::class])->group(function(){
         Route::get('/edit/{id}',[BlogController::class,'edit'])->name('blog.edit');
         Route::put('/update/{id}',[BlogController::class,'update'])->name('blog.update');
         Route::delete('/delete/{id}',[BlogController::class,'destroy'])->name('blog.destroy');
+    });
+});
+
+Route::middleware([AuthenticateMiddleware::class])->group(function(){
+    Route::prefix('showrooms')->group(function(){
+        Route::get('/',[ShowroomController::class,'index'])->name('showrooms.index');
+        Route::get('/show/{id}',[ShowroomController::class,'show'])->name('showrooms.show');
+        Route::get('/create',[ShowroomController::class,'create'])->name('showrooms.create');
+        Route::post('/store',[ShowroomController::class,'store'])->name('showrooms.store');
+        Route::get('/edit/{id}',[ShowroomController::class,'edit'])->name('showrooms.edit');
+        Route::put('/update/{id}',[ShowroomController::class,'update'])->name('showrooms.update');
+        Route::delete('/delete/{id}',[ShowroomController::class,'destroy'])->name('showrooms.destroy');
     });
 });
 
