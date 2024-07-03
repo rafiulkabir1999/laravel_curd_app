@@ -45,28 +45,20 @@ class BlogController extends Controller
         //   dd(Auth::user()->id);
         // dd($request);
         $request->validate([
-            //'title'=>'required|min:10|max:30',
-            //'description'=>'required|min:50|max:100',
-            //'image'=>"required|image|mimes:jpeg,png,jpg|max:2048"
+            'title'=>'required',
+            'description'=>'required',
+            'image'=>"required|image|mimes:jpeg,png,jpg|max:2048"
         ]);
         
-        $filename = time().'.'.$request->image->extension();
+        $filename = 'http://127.0.0.1:8000/storage/uploads/'.time().'.'.$request->image->extension();
 
         if ($request->hasFile('image')) {
 
 
-            // $fileTemp = $request->file('file');
-            // if($fileTemp->isValid()){
-            //   $fileExtension = $fileTemp->getClientOriginalExtension();
-            //   $fileName = Str::random(4). '.'. $fileExtension;
-            //   $path = $fileTemp->storeAs(
-            //       'public/uploads', $fileName
-            //   );
-            // }
 
-            //  $filename = time() . '.' . $request->image->getClientOriginalExtension();
+       
             $request->image->move(public_path('storage/uploads'), $filename); 
-            // $request->img->storeAs('public/uploads', $filename);
+            //$request->img->storeAs('public/uploads', $filename);
              
             
             $blog  = new Blog();
@@ -74,10 +66,9 @@ class BlogController extends Controller
             $blog->title = $request->title;
             $blog->description = $request->description;
             $blog->img = $filename;
-            //$blog->save();
-            
-            // return 444;
-            return redirect()->route('blog.index')->with('file upload','sussessfully file uploaded');
+            $blog->save();
+
+            return redirect()->route('blog.index')->with('blog_create','sussessfully file uploaded');
         } else {
    
            return redirect()->back()->withErrors(['message' => 'Please upload an image file.']);

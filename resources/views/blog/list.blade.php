@@ -3,7 +3,11 @@
 <div> 
     <div class="" style="min-height: 95vh">
 
+        
+
         <div class="container py-4" >
+
+
             <div class="btn btn-secondary">
                 <a href="/blogs/create" class="text-decoration-none  text-light">
                     Create Blog
@@ -16,13 +20,13 @@
 @endif
 
             
-         <div class="row gap-4">
+         <div class="row">
             @foreach($blogs as $item)
             
                 
                 <div class="col-3">
-                    <div class="card">
-                        <img src="http://127.0.0.1:8000/uploads/{{$item->img}}" class="img-fluid p-4" alt="">
+                    <div class="card mb-4">
+                        <img src="{{$item->img}}" class="img-fluid p-4" alt="">
                         <div class="card-body">
                              
                             <h5 class="card-title">{{$item->title}}</h5>

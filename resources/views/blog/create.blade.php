@@ -7,15 +7,23 @@
         <div class="">
             <label for="" class="form-label">Image</label>
             <input type="file" name='image' class="form-control">
+            @error('image')
+                <span class="text-danger">Image is required</span>
+            @enderror
         </div>
         <div class="form-group mt-3">
             <label for="" class="form-label">Title</label>
-            <input type="text" name='title' class="form-control">
+            <input type="text" name='title' class="form-control">@error('title')
+                <span class="text-danger text-xs">title is required</span>
+            @enderror
         </div>
         <div class="form-group mt-3">
             <label for="" class="form-label ">Description</label>
             <textarea type="text" rows="7" name='description' class="form-control">
             </textarea>
+            @error('description')
+                <span>Description is required</span>
+            @enderror
         </div>
         <div class="form-group mt-3 d-flex justify-content-end">
             <button class="btn btn-primary ">Save</button>
