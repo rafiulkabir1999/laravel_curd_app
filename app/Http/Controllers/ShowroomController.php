@@ -31,10 +31,11 @@ class ShowroomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $request->validate([
-            // 'ShowroomName' => 'required|min:6|max:100',
+            'showroomname' => 'required',
         ]);
+        // dd($request);
         $showroom = new Showroom();
         $showroom->ShowroomName = $request->showroomname;
         $showroom->ShowroomAddress = $request->showroomaddress;

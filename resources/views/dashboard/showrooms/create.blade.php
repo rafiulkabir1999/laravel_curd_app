@@ -1,12 +1,15 @@
 @extends('layouts.dashboard')
 @section('content')
- <div class="w-50">
-    <div class="bg-secondary p-2  text-white">Provide Showrooms Information</div>
+ <div class="">
+    <div class="bg-dark p-2  text-white">Provide Showrooms Information</div>
     <form class=" p-5 border shadow rounded-b-3" action="{{route('showrooms.store')}}" method='POST'>
         @csrf
         <div class="pt-3">
             <label for="" class="form-label">ShowroomName</label>
             <input type="text" class="form-control" name='showroomname'>
+            @error('showroomname')
+                <span class='text-danger text-xs'>Showroom name is required</span>
+            @enderror
         </div>
         <div class="pt-3">
             <label for="" class="form-label">ShowroomAddress</label>
