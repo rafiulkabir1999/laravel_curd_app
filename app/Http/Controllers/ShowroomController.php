@@ -43,7 +43,6 @@ class ShowroomController extends Controller
         $showroom->Remarks = $request->remarks;
         $showroom->MapAddress = $request->mapaddress;
         $showroom->Area = $request->area;
-        //dd($showroom);
         $showroom->save();
         return redirect()->route('showrooms.index')->with('success','showroom added successfully');
     }
@@ -64,8 +63,8 @@ class ShowroomController extends Controller
     public function edit(string $id)
     {
         //
-        $showrooms = Showroom::findOrFail($id);
-        return view('dashboard.showrooms.edit',compact('showrooms'));
+        $showroom = Showroom::findOrFail($id);
+        return view('dashboard.showrooms.edit',compact('showroom'));
     }
 
     /**
@@ -77,7 +76,7 @@ class ShowroomController extends Controller
         $showroom = Showroom::findOrFail($id);
        
         $showroom->update([
-             $showroom->ShowroomName = $request->showroomname,
+        $showroom->ShowroomName = $request->showroomname,
         $showroom->ShowroomAddress = $request->showroomaddress,
         $showroom->PhoneNumber = $request->phonenumber,
         $showroom->Email = $request->email,
@@ -85,7 +84,6 @@ class ShowroomController extends Controller
         $showroom->MapAddress = $request->mapaddress,
         $showroom->Area = $request->area,
         ]);
-        // dd($showroom);
          return redirect()->route('showrooms.index')->with('success','updated successfully');
     }
 

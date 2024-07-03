@@ -16,7 +16,7 @@
 
     <div class="d-flex">
         @include('common.dashboardHeader')
-        <div class="flex-grow-1 ">
+        <div class="flex-grow-1 " style='margin-left:300px'>
             <div class="p-3 bg-secondary">header</div>
         <div class="p-4" style="width:100%;min-height:95vh">
             @yield('content')
