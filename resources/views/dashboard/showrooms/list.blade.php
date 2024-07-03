@@ -2,7 +2,7 @@
 @section('content')
  <div class="">
     <div class="">
-        <button class=" btn btn-primary p-2 mb-2">
+        <button class=" btn p-2 mb-2" style="background:#00652e">
             <a href="/showrooms/create" class="text-white text-decoration-none">
                 Create Showroom</a>
         </button>

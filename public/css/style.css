@@ -1,5 +1,5 @@
 #showroom{
-    height: 43px;
+    height: 44px;
     transition: height 0.3s ease-in-out;
     /* overflow: hidden; */
 }
@@ -19,4 +19,8 @@
 }
 .rotate{
     rotate:-180deg !important;
+}
+.active{
+    
+    background: red;
 }

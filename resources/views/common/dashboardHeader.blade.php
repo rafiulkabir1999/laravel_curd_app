@@ -13,8 +13,8 @@
     
     <div class=" mx-3">
     <div class=" p-0">
-        <div onclick="handleclick()" id='showroom' class="d-flex flex-column overflow-hidden " >
-          <div class="d-flex justify-content-between align-items-center p-2 rounded-1" style="background:#00652e;cursor:pointer">
+        <div onclick="handleclick()" id='showroom' class="d-flex flex-column overflow-hidden open {{ request()->is('showrooms/*') ? 'open' : 'null'}}" >
+          <div class="d-flex justify-content-between align-items-center p-2 rounded-1 " style="background:#00652e;cursor:pointer">
             
               <p class="m-0 p-0 text-white fw-bold"> Showroom</p>
               <div id='icon' class="cursor-pointer text-center  text-white" >
@@ -23,12 +23,18 @@
                 <svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z" fill="#ffff" /></svg>
               </div>
           </div>
-            <div id='submenu_showrooms' class="d-flex flex-column mt-1 ">
-              <a href="/showrooms" class="text-decoration-none p-2 text-white text-xs fw-bold">Show Showroom</a>
-              <a href="/showrooms/create" class="text-decoration-none p-2 text-white text-xs fw-bold">Add Showroom</a>
+            <ul id='submenu_showrooms' class="d-flex flex-column mt-1  px-0">
+              <li class="{{ request()->is('showrooms') ? 'active' : 'null'}} p-2">
+
+                <a href="/showrooms" class="text-decoration-none  text-white text-xs fw-bold ">Show Showroom</a>
+              </li>
+              <li class="{{ request()->is('showrooms/create') ? 'active' : 'null'}} p-2">
+
+                <a href="/showrooms/create" class="text-decoration-none  text-white text-xs fw-bold ">Add Showroom</a>
+              </li>
               
               
-            </div>
+            </ul>
         </div>
         
         
