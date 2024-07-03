@@ -6,6 +6,7 @@
 #submenu_showrooms a:hover{
     /* transform: translatey(-100px); */
     background-color: rgba(110, 110, 110, 0.336) !important;
+    color:red !important;
 }
 #showroom.open  {
     height: 125px;
