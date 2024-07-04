@@ -21,6 +21,9 @@ class AuthController extends Controller
     }
     public function register(){
         // return 444;
+        if(Auth::user()){
+            return redirect()->route('user.profile');
+        }
         return view('auth.register');
     }
     public function storeUser(Request $user){
@@ -42,6 +45,7 @@ class AuthController extends Controller
     
         // Attempt to save the new user record
         if ($newUser->save()) {
+            // $newUser->sendEmailVerificationNotification();
             return redirect()->route('student.index')->with('success', 'User successfully created');
         } else {
             return redirect()->route('auth.register')->withErrors(['error' => 'Failed to create user']);

@@ -5,8 +5,9 @@
 }
 #submenu_showrooms a:hover{
     /* transform: translatey(-100px); */
-    background-color: rgba(110, 110, 110, 0.336) !important;
-    color:red !important;
+    /* background-color: rgba(110, 110, 110, 0.336) !important; */
+    color:#00652e !important;
+    color:white !important;
 }
 #showroom.open  {
     height: 125px;
@@ -22,6 +23,5 @@
     rotate:-180deg !important;
 }
 .active{
-    
-    background: red;
+    background: #eb1c24;
 }

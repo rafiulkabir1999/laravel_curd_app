@@ -23,15 +23,18 @@
                 <svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z" fill="#ffff" /></svg>
               </div>
           </div>
-            <ul id='submenu_showrooms' class="d-flex flex-column mt-1  px-0">
-              <li class="{{ request()->is('showrooms') ? 'active' : 'null'}} p-2">
+            <ul id='submenu_showrooms' class="d-flex flex-column mt-1  px-0 ">
+             <a href="/showrooms" class="text-decoration-none  text-white text-xs  "> 
+              <li class="{{ request()->is('showrooms') ? 'active' : 'null'}} ps-4 list-unstyled p-2" style="font-size: 14px">
 
-                <a href="/showrooms" class="text-decoration-none  text-white text-xs fw-bold ">Show Showroom</a>
-              </li>
-              <li class="{{ request()->is('showrooms/create') ? 'active' : 'null'}} p-2">
+                Show Showroom
+              </li></a>
+              
+              <a href="/showrooms/create" class="text-decoration-none  text-white text-xs ">
+              <li class="{{ request()->is('showrooms/create') ? 'active' : 'null'}}  ps-4  list-unstyled p-2" style="font-size: 14px">
 
-                <a href="/showrooms/create" class="text-decoration-none  text-white text-xs fw-bold ">Add Showroom</a>
-              </li>
+                Add Showroom
+              </li></a>
               
               
             </ul>
