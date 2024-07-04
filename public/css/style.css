@@ -25,3 +25,38 @@
 .active{
     background: #eb1c24;
 }
+
+.menu-hamburger{
+    /* background: red; */
+}
+.menu-hamburger :hover{
+ cursor:pointer;
+ padding:2px;
+}
+.content{
+    margin: 0px 0px 0px 300px;
+    /* transform: translatex(300px); */
+}
+
+.slowdown{
+    transition: all .3s ease-in-out;}
+.sidebar{
+    transform: translatex(-300px);
+    
+}
+#logoutbtn{
+    background:#00652e;
+    cursor:pointer;
+}
+#logoutcard{
+    transition: transform height .3s ease;
+}
+#logoutbtn:hover{
+    background: rgba(104, 104, 104, 0.521);
+}
+
+.hide{
+    max-height: 0px !important;
+    overflow: hidden;
+    opacity:0;
+}

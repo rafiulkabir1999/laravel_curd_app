@@ -1,4 +1,4 @@
-<div class="position-fixed mb-3 bg-dark" style="min-height: 100vh;width:300px">
+<div id='sidebar' class="slowdown position-fixed mb-3 bg-dark" style="min-height: 100vh;width:300px">
 <div class="mt-3 bg-dark  border-secondary d-flex align-items-center justify-content-center">
     <p class="m-0    text-secondary text-center fw-bold fs-3 text-wrap ">
         <a href="/" class="text-decoration-none">
