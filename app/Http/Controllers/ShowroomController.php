@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Showroom;
 use Illuminate\Http\Request;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 class ShowroomController extends Controller
 {
     /**
@@ -98,4 +98,120 @@ class ShowroomController extends Controller
         $showrooms->delete($id);
         return redirect()->route('showrooms.index');
     }
+
+    //api
+    public function getShowrooms() {
+        $showrooms = Showroom::all();
+    
+        if ($showrooms->isNotEmpty()) {
+            $result = array(
+                'status' => true,
+                'message' => 'Successfully retrieved Showrooms',
+                'data' => $showrooms
+            );
+            return response()->json($result, 200);
+        } else {
+            $result = array(
+                'status' => false,
+                'message' => 'No Showrooms found',
+                'data' => []
+            );
+            return response()->json($result, 404);
+        }
+    }
+    
+    public function getShowroomsById($id) {
+        try {
+            $showroom = Showroom::findOrFail($id);
+            $result = array(
+                'status' => true,
+                'message' => 'Successfully retrieved Showroom',
+                'data' => $showroom
+            );
+            return response()->json($result, 200);
+        } catch (ModelNotFoundException $e) {
+            $result = array(
+                'status' => false,
+                'message' => 'Showroom not found',
+                'data' => null
+            );
+            return response()->json($result, 404);
+        }
+    }
+
+    public function updateShowroom(Request $request, $id) {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'ShowroomName' => 'sometimes|string|max:255',
+             'ShowroomAddress' => 'sometimes|string|max:255',
+             'PhoneNumber' => 'sometimes|string|max:255',
+             'Email' => 'sometimes|string|max:255',
+             'Remarks' => 'sometimes|string|max:255',
+             'MapAddress' => 'sometimes|string|max:255',
+             'Area' => 'sometimes|string|max:255',
+        ]);
+    
+        try {
+            // Find the showroom by ID
+            $showroom = Showroom::findOrFail($id);
+    
+           
+            // Update the showroom with validated data
+            $showroom->update($validatedData);
+    
+            $result = array(
+                'status' => true,
+                'message' => 'Showroom updated successfully',
+                'data' => $showroom
+            );
+            return response()->json($result, 200);
+        } catch (ModelNotFoundException $e) {
+            $result = array(
+                'status' => false,
+                'message' => 'Showroom not found',
+                'data' => null
+            );
+            return response()->json($result, 404);
+        } catch (\Exception $e) {
+            $result = array(
+                'status' => false,
+                'message' => 'Failed to update Showroom',
+                'data' => null
+            );
+            return response()->json($result, 500);
+        }
+    }
+    
+    public function deleteShowroom($id) {
+        try {
+            // Find the showroom by ID
+            $showroom = Showroom::findOrFail($id);
+    
+            // Delete the showroom
+            $showroom->delete();
+    
+            $result = array(
+                'status' => true,
+                'message' => 'Showroom deleted successfully',
+                'data' => null
+            );
+            return response()->json($result, 200);
+        } catch (ModelNotFoundException $e) {
+            $result = array(
+                'status' => false,
+                'message' => 'Showroom not found',
+                'data' => null
+            );
+            return response()->json($result, 404);
+        } catch (\Exception $e) {
+            $result = array(
+                'status' => false,
+                'message' => 'Failed to delete Showroom',
+                'data' => null
+            );
+            return response()->json($result, 500);
+        }
+    }
+    
+
 }

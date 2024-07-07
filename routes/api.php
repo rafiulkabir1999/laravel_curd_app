@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ShowroomController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -28,3 +29,9 @@ Route::group([], function () {
 
 
 
+
+
+Route::get('get-showrooms',[ShowroomController::class,'getShowrooms']);
+Route::get('get-showrooms/{id}',[ShowroomController::class,'getShowroomsById']);
+Route::put('update-showrooms/{id}',[ShowroomController::class,'updateShowroom']);
+Route::delete('delete-showrooms/{id}',[ShowroomController::class,'deleteShowroom']);
