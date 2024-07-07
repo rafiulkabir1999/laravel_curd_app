@@ -81,4 +81,33 @@ class StudentController extends Controller
         $student->delete();
         return redirect()->route('student.index')->with('success','Student Delete Successfully');
     }
+
+
+    //API
+    public function getStudents()
+    {
+       $student = Studnet::all();
+       if(!empty($student)){
+        $result = array('status'=>true,'message'=>'Get All student successfully','data'=>$student);
+        return response()->json($result,200);
+       }
+       else{
+        $result = array('status'=> false,'message'=>'Failed getting student');
+        return response()->json($result,400);
+       }
+    }
+
+    
+    public function getStudentsById(string $id)
+    {
+       $student = Studnet::findOrFail($id);
+       if($student->id){
+        $result = array('status'=>true,'message'=>'Get student successfully','data'=>$student);
+        return response()->json($result,200);
+       }
+       else{
+        $result = array('status'=> false,'message'=>'Failed getting student');
+        return response()->json($result,400);
+       }
+    }
 }

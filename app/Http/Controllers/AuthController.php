@@ -84,5 +84,15 @@ class AuthController extends Controller
         //  return redirect()->router('auth.login')->with("Success",'Logout Sussessfully Done');
     }
 
+
+    //API
+    public function getUser(){
+     $users = User::all()->select('email', 'name' ,'phone');
+     if($users){
+        $result = array('status'=>true,'message'=>'get user successfully','data' =>$users);
+       
+        return response()->json($result,200);
+     }
+    }
    
 }
