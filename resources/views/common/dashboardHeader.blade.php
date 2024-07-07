@@ -28,13 +28,15 @@
                          <li class="{{ request()->is('showrooms') ? 'active' : 'null'}} ps-4 list-unstyled p-2" style="font-size: 14px">
            
                            Show Showroom
-                         </li></a>
+                         </li>
+                        </a>
                          
                          <a href="/showrooms/create" class="text-decoration-none  text-white text-xs ">
                          <li class="{{ request()->is('showrooms/create') ? 'active' : 'null'}}  ps-4  list-unstyled p-2" style="font-size: 14px">
            
                            Add Showroom
-                         </li></a>
+                         </li>
+                        </a>
                          
                          
                        </ul>

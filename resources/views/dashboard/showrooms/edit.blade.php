@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('content')
  
-    <div class="w-50">
+    <div class="">
         <div class="bg-secondary p-2  text-white">Provide Showrooms Information</div>
         <form class=" p-5 border shadow rounded-b-3" action="{{route('showrooms.update',$showroom->id)}}" method='POST'>
             @csrf

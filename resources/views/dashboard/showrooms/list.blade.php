@@ -1,6 +1,15 @@
 @extends('layouts.dashboard')
 @section('content')
  <div class="">
+
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+
     <div class="">
         <button class=" btn p-2 mb-2" style="background:#00652e">
             <a href="/showrooms/create" class="text-white text-decoration-none">
@@ -60,13 +69,23 @@
                                 </a>
                             </button>
                             <button class="btn-sm btn-warning">
-                                <a href="showrooms/edit/{{$item->id}}">edit</a>
+                                <a class="text-decoration-none text-white" href="showrooms/edit/{{$item->id}}">edit</a>
                             </button>
-                            <form action="{{ route('showrooms.destroy',$item->id)}}" method="post">
+                            <form id="deleteForm-{{ $item->id }}" action="{{ route('showrooms.destroy', $item->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger " type='submit'>Delete</button>
+                                <button class="btn-sm btn-danger" type="submit" onclick="return confirmDelete('{{ $item->id }}')">Delete</button>
                             </form>
+                            
+                            <script>
+                                function confirmDelete(id) {
+                                    if (confirm('Are you sure you want to delete this showroom?')) {
+                                        document.getElementById('deleteForm-' + id).submit();
+                                    }
+                                    return false; // Cancel submission
+                                }
+                            </script>
+                            
                         </div>
                     </td>
                 </tr>

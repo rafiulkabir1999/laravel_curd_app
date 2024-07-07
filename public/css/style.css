@@ -5,7 +5,7 @@
 }
 #submenu_showrooms a:hover{
     /* transform: translatey(-100px); */
-    /* background-color: rgba(110, 110, 110, 0.336) !important; */
+    background-color: rgba(110, 110, 110, 0.336) !important;
     color:#00652e !important;
     color:white !important;
 }
@@ -43,6 +43,12 @@
 .sidebar{
     transform: translatex(-300px);
     
+}
+.profile:hover{
+/* padding:2px; */
+transform: scale(.8);
+color: #eb1c24;
+cursor:pointer;
 }
 #logoutbtn{
     background:#00652e;
